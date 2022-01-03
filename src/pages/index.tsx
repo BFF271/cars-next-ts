@@ -1,5 +1,52 @@
-const HomePage: React.FC = () => {
-  return <h1>Exotic Cars</h1>;
+import { GetStaticProps } from 'next';
+import fs from 'fs';
+import path from 'path';
+
+import { Car } from '@components';
+
+import { CarType } from '@shared/types';
+
+import * as S from '@pageStyles/Home';
+
+type Props = {
+  cars: CarType[];
+};
+
+const HomePage: React.FC<Props> = ({ cars }) => {
+  return (
+    <S.Container>
+      <S.Content>
+        {cars.length > 0 && (
+          <S.CarList>
+            {cars.map((car) => (
+              <Car key={car.id} car={car} />
+            ))}
+          </S.CarList>
+        )}
+
+        {cars.length === 0 && (
+          <S.Wrapper>
+            <S.SadIcon />
+            <S.Message>
+              Oops...there are no cars registered in the system.
+            </S.Message>
+          </S.Wrapper>
+        )}
+      </S.Content>
+    </S.Container>
+  );
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const carsDatabasePath = path.join(process.cwd(), 'database', 'cars.json');
+
+  const fileContent = fs.readFileSync(carsDatabasePath) as unknown as string;
+
+  const cars: CarType[] = JSON.parse(fileContent);
+
+  return {
+    props: { cars },
+  };
 };
 
 export default HomePage;

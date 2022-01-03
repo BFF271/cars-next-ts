@@ -1,117 +1,115 @@
-{
-  "cars": [
-    {
-      "id": 1,
-      "brand": "Ferrari",
-      "brandLogo": "https://i.ibb.co/swjw4B6/logo.png",
-      "model": "California",
-      "thumbnail": "https://i.ibb.co/jkVWcTH/lateral.png",
-      "rent": {
-        "price": 725,
-        "period": "day"
-      },
-      "colors": [
-        {
-          "color": "Red",
-          "image": "https://i.ibb.co/MpL04Td/01.png"
-        },
-        {
-          "color": "White",
-          "image": "https://i.ibb.co/QQ8MmVt/02.png"
-        },
-        {
-          "color": "Black",
-          "image": "https://i.ibb.co/fQ2Zkdv/03.png"
-        }
-      ]
+[
+  {
+    "id": 1,
+    "brand": "Ferrari",
+    "brandLogo": "https://i.ibb.co/swjw4B6/logo.png",
+    "model": "California",
+    "thumbnail": "https://i.ibb.co/jkVWcTH/lateral.png",
+    "rent": {
+      "price": 725,
+      "period": "day"
     },
-    {
-      "id": 2,
-      "brand": "Lamborghini",
-      "brandLogo": "https://i.ibb.co/PQ2G9c2/logo.png",
-      "model": "Aventador",
-      "thumbnail": "https://i.ibb.co/0XtCgJ3/lateral.png",
-      "rent": {
-        "price": 750,
-        "period": "day"
+    "colors": [
+      {
+        "color": "Red",
+        "image": "https://i.ibb.co/MpL04Td/01.png"
       },
-      "colors": [
-        {
-          "color": "Blue",
-          "image": "https://i.ibb.co/kGzgvpz/01.png"
-        },
-        {
-          "color": "White",
-          "image": "https://i.ibb.co/b27V9jG/02.png"
-        },
-        {
-          "color": "Orange",
-          "image": "https://i.ibb.co/ZTqDwMy/03.png"
-        }
-      ]
+      {
+        "color": "White",
+        "image": "https://i.ibb.co/QQ8MmVt/02.png"
+      },
+      {
+        "color": "Black",
+        "image": "https://i.ibb.co/fQ2Zkdv/03.png"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "brand": "Lamborghini",
+    "brandLogo": "https://i.ibb.co/PQ2G9c2/logo.png",
+    "model": "Aventador",
+    "thumbnail": "https://i.ibb.co/0XtCgJ3/lateral.png",
+    "rent": {
+      "price": 750,
+      "period": "day"
     },
-    {
-      "id": 3,
-      "brand": "Mustang",
-      "brandLogo": "https://i.ibb.co/BT6mrDH/mustang-logo.png",
-      "model": "Shelby GT500",
-      "thumbnail": "https://i.ibb.co/ww19VSS/mustang-lateral.png",
-      "rent": {
-        "price": 610,
-        "period": "day"
+    "colors": [
+      {
+        "color": "Blue",
+        "image": "https://i.ibb.co/kGzgvpz/01.png"
       },
-      "colors": [
-        {
-          "color": "Red",
-          "image": "https://i.ibb.co/3CrZNxv/mustang-red.png"
-        }
-      ]
+      {
+        "color": "White",
+        "image": "https://i.ibb.co/b27V9jG/02.png"
+      },
+      {
+        "color": "Orange",
+        "image": "https://i.ibb.co/ZTqDwMy/03.png"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "brand": "Mustang",
+    "brandLogo": "https://i.ibb.co/BT6mrDH/mustang-logo.png",
+    "model": "Shelby GT500",
+    "thumbnail": "https://i.ibb.co/ww19VSS/mustang-lateral.png",
+    "rent": {
+      "price": 610,
+      "period": "day"
     },
-    {
-      "id": 4,
-      "brand": "Porsche",
-      "brandLogo": "https://i.ibb.co/W258kgD/logo.png",
-      "model": "Macan Turbo",
-      "thumbnail": "https://i.ibb.co/GvLDs2r/lateral.png",
-      "rent": {
-        "price": 505,
-        "period": "day"
-      },
-      "colors": [
-        {
-          "color": "White",
-          "image": "https://i.ibb.co/r24dT50/01.png"
-        },
-        {
-          "color": "Blue",
-          "image": "https://i.ibb.co/CHTr0fY/02.png"
-        },
-        {
-          "color": "Black",
-          "image": "https://i.ibb.co/jzKdnPV/03.png"
-        }
-      ]
+    "colors": [
+      {
+        "color": "Red",
+        "image": "https://i.ibb.co/3CrZNxv/mustang-red.png"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "brand": "Porsche",
+    "brandLogo": "https://i.ibb.co/W258kgD/logo.png",
+    "model": "Macan Turbo",
+    "thumbnail": "https://i.ibb.co/GvLDs2r/lateral.png",
+    "rent": {
+      "price": 505,
+      "period": "day"
     },
-    {
-      "id": 5,
-      "brand": "Chevrolet",
-      "brandLogo": "https://i.ibb.co/gmQhqCZ/chevrolet-logo.png",
-      "model": "Camaro",
-      "thumbnail": "https://i.ibb.co/5x5bqF9/camaro-lateral.png",
-      "rent": {
-        "price": 640,
-        "period": "day"
+    "colors": [
+      {
+        "color": "White",
+        "image": "https://i.ibb.co/r24dT50/01.png"
       },
-      "colors": [
-        {
-          "color": "Yellow",
-          "image": "https://i.ibb.co/fv8nKPc/camaro-yellow.png"
-        },
-        {
-          "color": "Red",
-          "image": "https://i.ibb.co/W2CzDvs/camaro-red.png"
-        }
-      ]
-    }
-  ]
-}
+      {
+        "color": "Blue",
+        "image": "https://i.ibb.co/CHTr0fY/02.png"
+      },
+      {
+        "color": "Black",
+        "image": "https://i.ibb.co/jzKdnPV/03.png"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "brand": "Chevrolet",
+    "brandLogo": "https://i.ibb.co/gmQhqCZ/chevrolet-logo.png",
+    "model": "Camaro",
+    "thumbnail": "https://i.ibb.co/5x5bqF9/camaro-lateral.png",
+    "rent": {
+      "price": 640,
+      "period": "day"
+    },
+    "colors": [
+      {
+        "color": "Yellow",
+        "image": "https://i.ibb.co/fv8nKPc/camaro-yellow.png"
+      },
+      {
+        "color": "Red",
+        "image": "https://i.ibb.co/W2CzDvs/camaro-red.png"
+      }
+    ]
+  }
+]
