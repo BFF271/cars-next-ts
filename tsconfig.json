@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@components": ["./src/components"],
+      "@pageStyles/*": ["./src/styles/pages/*"],
       "@styles": ["./src/styles"],
       "@shared/*": ["./src/shared/*"]
     }
