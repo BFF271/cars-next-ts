@@ -35,15 +35,6 @@ export function DetailedCar({ car, color, image, index }: DetailedCarProps) {
         <S.CarImage src={image} />
       </S.CarImageWrapper>
 
-      <S.BookNowButtonContainer>
-        <Link href="/" passHref>
-          <S.BookNowButton>
-            Book now
-            <S.ArrowRightIcon />
-          </S.BookNowButton>
-        </Link>
-      </S.BookNowButtonContainer>
-
       <S.BackToCatalogButtonContainer>
         <Link href="/" passHref>
           <S.BackToCatalogButton $isOutlined>
@@ -52,6 +43,15 @@ export function DetailedCar({ car, color, image, index }: DetailedCarProps) {
           </S.BackToCatalogButton>
         </Link>
       </S.BackToCatalogButtonContainer>
+
+      <S.BookNowButtonContainer>
+        <Link href="/" passHref>
+          <S.BookNowButton>
+            Book now
+            <S.ArrowRightIcon />
+          </S.BookNowButton>
+        </Link>
+      </S.BookNowButtonContainer>
     </S.Container>
   );
 }

@@ -1,6 +1,29 @@
 import styled, { css } from 'styled-components';
+import { motion, Variants } from 'framer-motion';
 
-export const Form = styled.form`
+const formVariants: Variants = {
+  hidden: {
+    y: 800,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.2,
+      damping: 20,
+      delayChildren: 0.4,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+export const Form = styled(motion.form).attrs({
+  variants: formVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   background: ${({ theme }) => theme.colors.background_light};
   width: 44rem;
   height: auto;
@@ -13,12 +36,6 @@ export const Form = styled.form`
   z-index: 10;
   bottom: 0;
   left: 2.4rem;
-
-  button {
-    height: 4.8rem;
-    margin-top: 2.4rem;
-    font-size: 1.8rem;
-  }
 
   @media (max-width: 916px) {
     position: relative;
@@ -35,7 +52,24 @@ export const FormFieldset = styled.fieldset`
   border: 0;
 `;
 
-export const FormTitle = styled.legend`
+const bottomToTopVariants: Variants = {
+  hidden: {
+    y: 20,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.4,
+    },
+  },
+};
+
+export const FormTitle = styled(motion.legend).attrs({
+  variants: bottomToTopVariants,
+})`
   margin-bottom: 2.4rem;
 
   font-size: 3.2rem;
@@ -52,7 +86,9 @@ export const FormGroup = styled.div`
   }
 `;
 
-export const Label = styled.label`
+export const Label = styled(motion.label).attrs({
+  variants: bottomToTopVariants,
+})`
   margin-bottom: 0.4rem;
 
   font-size: 1.4rem;
@@ -60,18 +96,22 @@ export const Label = styled.label`
   color: ${({ theme }) => theme.colors.text_900};
 `;
 
-export const Input = styled.input`
+export const Input = styled(motion.input).attrs({
+  variants: bottomToTopVariants,
+})`
   ${({ theme }) => css`
     width: 100%;
     height: 4.4rem;
     padding: 1.2rem;
     border: 1px solid ${theme.colors.text_300};
-    border-radius: 0.8rem;
+    border-radius: 1.2rem;
 
     font-size: 1.6rem;
     color: ${theme.colors.text_900};
 
     caret-color: ${theme.colors.primary};
+
+    transition: border-color 0.2s;
 
     &:focus {
       border-color: ${theme.colors.primary};
@@ -79,8 +119,31 @@ export const Input = styled.input`
   `}
 `;
 
-export const ErrorMessage = styled.span`
+const errorMessageVariants: Variants = {
+  hidden: {
+    x: -20,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+  },
+};
+
+export const ErrorMessage = styled(motion.span).attrs({
+  variants: errorMessageVariants,
+})`
   margin-top: 0.4rem;
   font-size: 1.4rem;
   color: ${({ theme }) => theme.colors.error};
+`;
+
+export const ButtonContainer = styled(motion.div).attrs({
+  variants: bottomToTopVariants,
+})`
+  button {
+    height: 4.8rem;
+    margin-top: 2.4rem;
+    font-size: 1.8rem;
+  }
 `;

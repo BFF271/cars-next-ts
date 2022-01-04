@@ -26,7 +26,9 @@ export const AuthenticationForm: React.FC = () => {
           <S.Input type="password" id="password" />
         </S.FormGroup>
 
-        <Button>Log In</Button>
+        <S.ButtonContainer>
+          <Button>Log In</Button>
+        </S.ButtonContainer>
       </S.FormFieldset>
     </S.Form>
   );

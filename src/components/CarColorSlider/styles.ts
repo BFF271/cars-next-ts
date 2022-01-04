@@ -1,8 +1,30 @@
 import styled, { css } from 'styled-components';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { Swiper } from 'swiper/react';
+import { motion, Variants } from 'framer-motion';
 
-export const Container = styled.section`
+const containerVariants: Variants = {
+  hidden: {
+    y: 50,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      delay: 2,
+      type: 'spring',
+      bounce: 0.7,
+    },
+  },
+};
+
+export const Container = styled(motion.section).attrs({
+  variants: containerVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   padding: 0 6.4rem;
 
   display: flex;

@@ -1,5 +1,6 @@
-import Image from 'next/image';
 import styled from 'styled-components';
+import Image from 'next/image';
+import { motion, Variants } from 'framer-motion';
 
 export const Container = styled.main``;
 
@@ -14,7 +15,24 @@ export const Content = styled.div`
   }
 `;
 
-export const FormContainer = styled.section`
+const formContainerVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren',
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+export const FormContainer = styled(motion.section).attrs({
+  variants: formContainerVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   background: ${({ theme }) => theme.colors.background_dark};
   width: 100%;
   border-radius: 1rem;

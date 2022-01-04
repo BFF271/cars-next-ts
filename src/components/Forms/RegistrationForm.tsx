@@ -31,7 +31,9 @@ export const RegistrationForm: React.FC = () => {
           <S.Input type="password" id="password" />
         </S.FormGroup>
 
-        <Button>Register</Button>
+        <S.ButtonContainer>
+          <Button>Register</Button>
+        </S.ButtonContainer>
       </S.FormFieldset>
     </S.Form>
   );

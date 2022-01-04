@@ -1,7 +1,21 @@
 import styled, { css } from 'styled-components';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import { motion, Variants } from 'framer-motion';
 
-export const Container = styled.section`
+const containerVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+export const Container = styled(motion.section).attrs({
+  variants: containerVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   height: 100%;
   margin-bottom: 4.8rem;
 
@@ -28,7 +42,24 @@ export const Details = styled.header`
   }
 `;
 
-export const BrandLogo = styled.img`
+const brandLogoVariants: Variants = {
+  hidden: {
+    y: -25,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const BrandLogo = styled(motion.img).attrs({
+  variants: brandLogoVariants,
+})`
   width: 100%;
   max-width: min(12.4rem, 35vw);
   height: auto;
@@ -45,7 +76,24 @@ export const Info = styled.div`
   }
 `;
 
-export const BrandModel = styled.h2`
+const titleVariants: Variants = {
+  hidden: {
+    y: 25,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const BrandModel = styled(motion.h2).attrs({
+  variants: titleVariants,
+})`
   font-size: min(5rem, 10vw);
   text-transform: capitalize;
   color: ${({ theme }) => theme.colors.text_900};
@@ -55,7 +103,9 @@ export const BrandModel = styled.h2`
   }
 `;
 
-export const Rent = styled.span`
+export const Rent = styled(motion.span).attrs({
+  variants: titleVariants,
+})`
   display: block;
   font-size: min(4rem, 7vw);
   font-weight: 400;
@@ -74,12 +124,31 @@ export const Color = styled.div`
   }
 `;
 
-export const ColorIndex = styled.h4`
+const colorTextVariants: Variants = {
+  hidden: {
+    x: 50,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const ColorIndex = styled(motion.h4).attrs({
+  variants: colorTextVariants,
+})`
   font-size: min(5rem, 10vw);
   color: ${({ theme }) => theme.colors.text_900};
 `;
 
-export const ColorName = styled.span`
+export const ColorName = styled(motion.span).attrs({
+  variants: colorTextVariants,
+})`
   display: block;
   font-size: min(3rem, 8vw);
   text-transform: capitalize;
@@ -94,7 +163,18 @@ export const CarImageWrapper = styled.div`
   justify-content: center;
 `;
 
-export const CarImage = styled.img`
+const carImageVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
+export const CarImage = styled(motion.img).attrs({
+  variants: carImageVariants,
+})`
   width: 100%;
 `;
 
@@ -141,7 +221,24 @@ const Button = styled.a<ButtonType>`
   `}
 `;
 
-export const BackToCatalogButtonContainer = styled.div`
+const backToCatalogButtonContainerVariants: Variants = {
+  hidden: {
+    x: -25,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const BackToCatalogButtonContainer = styled(motion.div).attrs({
+  variants: backToCatalogButtonContainerVariants,
+})`
   grid-area: 5 / 1 / 6 / 3;
 
   @media (max-width: 916px) {
@@ -151,7 +248,24 @@ export const BackToCatalogButtonContainer = styled.div`
 
 export const BackToCatalogButton = styled(Button)``;
 
-export const BookNowButtonContainer = styled.div`
+const bookNowButtonContainerVariants: Variants = {
+  hidden: {
+    x: 25,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.5,
+    },
+  },
+};
+
+export const BookNowButtonContainer = styled(motion.div).attrs({
+  variants: bookNowButtonContainerVariants,
+})`
   grid-area: 7 / 4 / 8 / 6;
   display: flex;
   justify-content: center;

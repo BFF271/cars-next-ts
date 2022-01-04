@@ -1,7 +1,26 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import { motion, Variants } from 'framer-motion';
 
-export const Container = styled.li``;
+const containerVariants: Variants = {
+  hidden: {
+    x: -40,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.65,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+export const Container = styled(motion.li).attrs({
+  variants: containerVariants,
+})``;
 
 export const CarDetailsLink = styled(Link)``;
 
@@ -26,20 +45,57 @@ export const Header = styled.header`
 
 export const Details = styled.div``;
 
-export const Brand = styled.h2`
+const textVariants: Variants = {
+  hidden: {
+    y: 20,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.4,
+    },
+  },
+};
+
+export const Brand = styled(motion.h2).attrs({
+  variants: textVariants,
+})`
   font-size: 1.7rem;
   text-transform: capitalize;
   color: ${({ theme }) => theme.colors.text_900};
 `;
 
-export const Model = styled.h3`
+export const Model = styled(motion.h3).attrs({
+  variants: textVariants,
+})`
   font-size: 1.7rem;
   font-weight: 400;
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.text_900};
 `;
 
-export const OptionsButton = styled.div`
+const optionsButtonVariants: Variants = {
+  hidden: {
+    x: 20,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.4,
+      duration: 0.6,
+    },
+  },
+};
+
+export const OptionsButton = styled(motion.div).attrs({
+  variants: optionsButtonVariants,
+})`
   background: none;
   border: none;
 
@@ -54,7 +110,21 @@ export const Dot = styled.div`
   border-radius: 50%;
 `;
 
-export const Thumbnail = styled.img`
+const thumbnailVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
+
+export const Thumbnail = styled(motion.img).attrs({
+  variants: thumbnailVariants,
+  whileHover: {
+    scale: 1.05,
+  },
+})`
   width: 24.4rem;
   margin-top: 0.6rem;
   align-self: center;
@@ -65,7 +135,9 @@ export const Footer = styled.footer`
   justify-content: flex-end;
 `;
 
-export const Rent = styled.h4`
+export const Rent = styled(motion.h4).attrs({
+  variants: textVariants,
+})`
   color: ${({ theme }) => theme.colors.text_900};
 `;
 

@@ -1,12 +1,33 @@
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
 import { IoMenuOutline, IoClose } from 'react-icons/io5';
+import { motion, Variants } from 'framer-motion';
 
 type ButtonsProps = {
   isMobileMenuOpen: boolean;
 };
 
-export const Container = styled.header`
+const containerVariants: Variants = {
+  hidden: {
+    y: -150,
+  },
+  visible: {
+    y: 0,
+    transition: {
+      duration: 0.4,
+      type: 'spring',
+      bounce: 1,
+      damping: 12,
+      delayChildren: 0.6,
+    },
+  },
+};
+
+export const Container = styled(motion.header).attrs({
+  variants: containerVariants,
+  initial: 'hidden',
+  animate: 'visible',
+})`
   background: ${({ theme }) => theme.colors.background_light};
   width: 100%;
   height: 8.4rem;
@@ -19,7 +40,21 @@ export const Container = styled.header`
   z-index: 100000;
 `;
 
-export const Content = styled.nav`
+const contentVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
+export const Content = styled(motion.nav).attrs({
+  variants: contentVariants,
+})`
   width: 100%;
   max-width: 124rem;
   margin: 0 auto;
