@@ -9,7 +9,7 @@ type Props = {
 export function Car({ car }: Props) {
   return (
     <S.Container>
-      <S.CarDetailsLink href={`/${car.id}`}>
+      <S.CarDetailsLink href={`/car/${car.id}`}>
         <S.Content>
           <S.Header>
             <S.Details>
