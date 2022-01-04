@@ -1,13 +1,19 @@
 import { useCallback, useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import dynamic from 'next/dynamic';
 import fs from 'fs';
 import path from 'path';
 
-import { CarColorsSlider, DetailedCar } from '@components';
+import { CarColorsSliderProps, DetailedCar } from '@components';
 
 import { CarType } from '@shared/types';
 
 import * as S from '@pageStyles/CarDetails';
+
+const CarColorSliderDynamic = dynamic<CarColorsSliderProps>(
+  () => import('@components/CarColorSlider').then((mod) => mod.CarColorsSlider),
+  { ssr: false }
+);
 
 type Params = {
   carId: string;
@@ -47,7 +53,7 @@ const CarDetailsPage: React.FC<Props> = ({ car }) => {
               index={currentIndex}
             />
             {car.colors.length > 1 && (
-              <CarColorsSlider
+              <CarColorSliderDynamic
                 currentSlideIndex={currentIndex}
                 carColors={car.colors}
                 handleSelectCarColor={handleSelectCarColor}

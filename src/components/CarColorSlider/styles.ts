@@ -106,6 +106,7 @@ export const NavigationButton = styled.button<NavigationButtonProps>`
   justify-content: center;
 
   position: absolute;
+  z-index: 50;
   ${({ side }) =>
     side === 'left'
       ? css`

@@ -14,7 +14,7 @@ type CarColor = {
   image: string;
 };
 
-type CarColorsSliderProps = {
+export type CarColorsSliderProps = {
   currentSlideIndex: number;
   carColors: CarColor[];
   handleSelectCarColor: (newIndex: number) => void;
