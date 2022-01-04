@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Logo, SearchBar } from '@components';
+import { Button, Logo, SearchBar } from '@components';
 
 import * as S from './styles';
 
@@ -22,14 +22,22 @@ export const Header: React.FC = () => {
 
         <SearchBar />
 
-        <S.AuthButtons isMobileMenuOpen={isMobileMenuOpen}>
+        <S.Buttons isMobileMenuOpen={isMobileMenuOpen}>
           <S.CloseMobileMenuButton onClick={handleCloseMobileMenu}>
             <S.CloseIcon />
           </S.CloseMobileMenuButton>
 
-          <S.AuthButton styleType="secondary">Sign up</S.AuthButton>
-          <S.AuthButton styleType="primary">Sign in</S.AuthButton>
-        </S.AuthButtons>
+          <S.ButtonLink href="/">
+            <S.ButtonContainer>
+              <Button styleType="secondary">Sign up</Button>
+            </S.ButtonContainer>
+          </S.ButtonLink>
+          <S.ButtonLink href="/">
+            <S.ButtonContainer>
+              <Button styleType="primary">Sign in</Button>
+            </S.ButtonContainer>
+          </S.ButtonLink>
+        </S.Buttons>
 
         <S.OpenMobileMenuButton onClick={handleOpenMobileMenu}>
           <S.MenuIcon />

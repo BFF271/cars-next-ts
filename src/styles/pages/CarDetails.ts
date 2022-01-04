@@ -19,7 +19,7 @@ export const Content = styled.main`
   margin: 0 auto;
 
   @media (max-width: 916px) {
-    padding-bottom: 24rem;
+    padding-bottom: 20rem;
   }
 `;
 

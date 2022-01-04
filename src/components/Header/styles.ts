@@ -1,12 +1,9 @@
 import styled, { css } from 'styled-components';
+import Link from 'next/link';
 import { IoMenuOutline, IoClose } from 'react-icons/io5';
 
-type AuthButtonsProps = {
+type ButtonsProps = {
   isMobileMenuOpen: boolean;
-};
-
-type AuthButtonProps = {
-  styleType: 'primary' | 'secondary';
 };
 
 export const Container = styled.header`
@@ -32,7 +29,7 @@ export const Content = styled.nav`
   justify-content: space-between;
 `;
 
-export const AuthButtons = styled.section<AuthButtonsProps>`
+export const Buttons = styled.section<ButtonsProps>`
   display: flex;
   align-items: center;
   gap: 1.6rem;
@@ -63,40 +60,14 @@ export const AuthButtons = styled.section<AuthButtonsProps>`
   }
 `;
 
-export const AuthButton = styled.button<AuthButtonProps>`
-  ${({ theme, styleType }) => css`
-    background: transparent;
-    padding: 0.8rem 1.6rem;
-    border-radius: 1.2rem;
-    border: 2px solid transparent;
+export const ButtonLink = styled(Link)``;
 
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: ${theme.colors.primary};
-
-    transition: all 0.2s ease;
-
-    ${styleType === 'primary' &&
-    css`
-      border-color: ${theme.colors.primary};
-
-      &:hover {
-        background: ${theme.colors.primary};
-        color: ${theme.colors.text_50};
-      }
-    `}
-
-    ${styleType === 'secondary' &&
-    css`
-      &:hover {
-        border-color: ${theme.colors.primary};
-      }
-    `}
-
+export const ButtonContainer = styled.div`
+  button {
     @media (max-width: 916px) {
       font-size: 3.2rem;
     }
-  `}
+  }
 `;
 
 export const OpenMobileMenuButton = styled.button`

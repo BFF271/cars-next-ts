@@ -17,7 +17,7 @@ export const CarList = styled.ul`
   grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
 
   @media (max-width: 916px) {
-    padding-bottom: 24rem;
+    padding-bottom: 20rem;
   }
 `;
 

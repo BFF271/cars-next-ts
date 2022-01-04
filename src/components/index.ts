@@ -1,3 +1,4 @@
+export * from './Button';
 export * from './Car';
 export * from './CarColorSlider';
 export * from './DetailedCar';
