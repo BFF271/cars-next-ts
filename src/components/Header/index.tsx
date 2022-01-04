@@ -27,14 +27,18 @@ export const Header: React.FC = () => {
             <S.CloseIcon />
           </S.CloseMobileMenuButton>
 
-          <S.ButtonLink href="/">
+          <S.ButtonLink href="/signup">
             <S.ButtonContainer>
-              <Button styleType="secondary">Sign up</Button>
+              <Button onClick={handleCloseMobileMenu} styleType="secondary">
+                Sign up
+              </Button>
             </S.ButtonContainer>
           </S.ButtonLink>
-          <S.ButtonLink href="/">
+          <S.ButtonLink href="/signin">
             <S.ButtonContainer>
-              <Button styleType="primary">Sign in</Button>
+              <Button onClick={handleCloseMobileMenu} styleType="primary">
+                Sign in
+              </Button>
             </S.ButtonContainer>
           </S.ButtonLink>
         </S.Buttons>
