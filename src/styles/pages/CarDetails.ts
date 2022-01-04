@@ -15,8 +15,12 @@ export const Container = styled.div`
 export const Content = styled.main`
   max-width: 124rem;
   min-height: calc(100vh - 8.4rem);
-  padding: 5.6rem 0.8rem 24rem;
+  padding: 5.6rem 0.8rem;
   margin: 0 auto;
+
+  @media (max-width: 916px) {
+    padding-bottom: 24rem;
+  }
 `;
 
 export const Wrapper = styled.section`

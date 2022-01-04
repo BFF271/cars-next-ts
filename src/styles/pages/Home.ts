@@ -10,11 +10,15 @@ export const Content = styled.main`
 
 export const CarList = styled.ul`
   width: 100%;
-  padding: 2.4rem 0.8rem 24rem;
+  padding: 2.4rem 0.8rem 0;
 
   display: grid;
   gap: 2.4rem;
   grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+
+  @media (max-width: 916px) {
+    padding-bottom: 24rem;
+  }
 `;
 
 export const Wrapper = styled.section`
