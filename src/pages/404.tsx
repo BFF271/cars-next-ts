@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from 'next/head';
 
 import { Button } from '@components';
 
@@ -8,6 +9,11 @@ const Custom404: React.FC = () => {
   return (
     <S.Container>
       <S.Content>
+        <Head>
+          <title>Page not found | Exotic Cars</title>
+          <meta name="description" content="Page not found." />
+        </Head>
+
         <S.ImageContainer>
           <S.NotFoundImage
             src="/images/not-found.svg"

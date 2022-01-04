@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { Forms } from '@components';
 
 import * as S from '@pageStyles/SignIn';
@@ -6,6 +8,14 @@ const SignInPage: React.FC = () => {
   return (
     <S.Container>
       <S.Content>
+        <Head>
+          <title>Sign In | Exotic Cars</title>
+          <meta
+            name="description"
+            content="Access our system in search of your best four-wheel friend."
+          />
+        </Head>
+
         <S.FormContainer>
           <S.BannerContainer>
             <S.Banner

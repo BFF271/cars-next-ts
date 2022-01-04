@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import fs from 'fs';
 import path from 'path';
 
@@ -34,18 +35,36 @@ const CarDetailsPage: React.FC<Props> = ({ car }) => {
     <S.Container>
       <S.Content>
         {!car && (
-          <S.Wrapper>
-            <S.SadIcon />
-            <S.Message>
-              Oops...an error occurred contacting the server
-              <br />
-              or this is a non-existent car.
-            </S.Message>
-          </S.Wrapper>
+          <>
+            <Head>
+              <title>Oops... | Exotic Cars</title>
+              <meta
+                name="description"
+                content={'Oops...this is a non-existent car'}
+              />
+            </Head>
+            <S.Wrapper>
+              <S.SadIcon />
+              <S.Message>
+                Oops...an error occurred contacting the server
+                <br />
+                or this is a non-existent car.
+              </S.Message>
+            </S.Wrapper>
+          </>
         )}
 
         {car && (
           <>
+            <Head>
+              <title>
+                {car.brand} {car.model} | Exotic Cars
+              </title>
+              <meta
+                name="description"
+                content={`Buy now ${car.brand} ${car.model}`}
+              />
+            </Head>
             <DetailedCar
               car={car}
               color={car.colors[currentIndex].color}

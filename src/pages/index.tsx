@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import fs from 'fs';
 import path from 'path';
 
@@ -16,6 +17,14 @@ const HomePage: React.FC<Props> = ({ cars }) => {
   return (
     <S.Container>
       <S.Content>
+        <Head>
+          <title>Exotic Cars</title>
+          <meta
+            name="description"
+            content="Dozens of cars await you behind the wheel."
+          />
+        </Head>
+
         {cars.length > 0 && (
           <S.CarList>
             {cars.map((car) => (
