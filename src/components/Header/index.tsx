@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { signOut, useSession } from 'next-auth/react';
 
 import { Button, Logo, SearchBar } from '@components';
 
@@ -6,6 +7,7 @@ import * as S from './styles';
 
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { data: session } = useSession();
 
   const handleOpenMobileMenu = () => {
     setIsMobileMenuOpen(true);
@@ -13,6 +15,10 @@ export const Header: React.FC = () => {
 
   const handleCloseMobileMenu = () => {
     setIsMobileMenuOpen(false);
+  };
+
+  const handleUserSignOut = () => {
+    signOut();
   };
 
   return (
@@ -27,20 +33,32 @@ export const Header: React.FC = () => {
             <S.CloseIcon />
           </S.CloseMobileMenuButton>
 
-          <S.ButtonLink href="/signup">
+          {!session && (
+            <>
+              <S.ButtonLink href="/signup">
+                <S.ButtonContainer>
+                  <Button onClick={handleCloseMobileMenu} styleType="secondary">
+                    Sign up
+                  </Button>
+                </S.ButtonContainer>
+              </S.ButtonLink>
+              <S.ButtonLink href="/signin">
+                <S.ButtonContainer>
+                  <Button onClick={handleCloseMobileMenu} styleType="primary">
+                    Sign in
+                  </Button>
+                </S.ButtonContainer>
+              </S.ButtonLink>
+            </>
+          )}
+
+          {session && (
             <S.ButtonContainer>
-              <Button onClick={handleCloseMobileMenu} styleType="secondary">
-                Sign up
+              <Button onClick={handleUserSignOut} styleType="secondary">
+                Sign out
               </Button>
             </S.ButtonContainer>
-          </S.ButtonLink>
-          <S.ButtonLink href="/signin">
-            <S.ButtonContainer>
-              <Button onClick={handleCloseMobileMenu} styleType="primary">
-                Sign in
-              </Button>
-            </S.ButtonContainer>
-          </S.ButtonLink>
+          )}
         </S.Buttons>
 
         <S.OpenMobileMenuButton onClick={handleOpenMobileMenu}>

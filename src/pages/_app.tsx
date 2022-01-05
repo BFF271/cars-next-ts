@@ -8,31 +8,37 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Layout } from '@components';
 
 import { GlobalStyle, theme } from '@styles';
+import { SessionProvider } from 'next-auth/react';
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+const MyApp: React.FC<AppProps> = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}) => {
   return (
-    <AnimateSharedLayout>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
+    <SessionProvider session={session}>
+      <AnimateSharedLayout>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
 
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
 
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss={false}
-          draggable
-          pauseOnHover={false}
-          style={{ zIndex: 9999999, fontSize: 16 }}
-        />
-      </ThemeProvider>
-    </AnimateSharedLayout>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover={false}
+            style={{ zIndex: 9999999, fontSize: 16 }}
+          />
+        </ThemeProvider>
+      </AnimateSharedLayout>
+    </SessionProvider>
   );
 };
 
