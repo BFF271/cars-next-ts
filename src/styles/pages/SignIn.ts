@@ -16,13 +16,9 @@ export const Content = styled.div`
 `;
 
 const formContainerVariants: Variants = {
-  hidden: {
-    opacity: 0,
-  },
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
-      when: 'beforeChildren',
       staggerChildren: 0.2,
     },
   },

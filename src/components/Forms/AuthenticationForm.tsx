@@ -12,7 +12,7 @@ export const AuthenticationForm: React.FC = () => {
   }
 
   return (
-    <S.Form onSubmit={handleSubmitAuthenticationForm}>
+    <S.Form layoutId="form" onSubmit={handleSubmitAuthenticationForm}>
       <S.FormFieldset>
         <S.FormTitle>Authentication</S.FormTitle>
 

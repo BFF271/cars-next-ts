@@ -20,6 +20,9 @@ const containerVariants: Variants = {
 
 export const Container = styled(motion.li).attrs({
   variants: containerVariants,
+  whileHover: {
+    scale: 1.05,
+  },
 })``;
 
 export const CarDetailsLink = styled(Link)``;
@@ -121,9 +124,6 @@ const thumbnailVariants: Variants = {
 
 export const Thumbnail = styled(motion.img).attrs({
   variants: thumbnailVariants,
-  whileHover: {
-    scale: 1.05,
-  },
 })`
   width: 24.4rem;
   margin-top: 0.6rem;

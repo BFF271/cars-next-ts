@@ -1,29 +1,7 @@
 import styled, { css } from 'styled-components';
 import { motion, Variants } from 'framer-motion';
 
-const formVariants: Variants = {
-  hidden: {
-    y: 800,
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: 'spring',
-      bounce: 0.2,
-      damping: 20,
-      delayChildren: 0.4,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-export const Form = styled(motion.form).attrs({
-  variants: formVariants,
-  initial: 'hidden',
-  animate: 'visible',
-})`
+export const Form = styled(motion.form)`
   background: ${({ theme }) => theme.colors.background_light};
   width: 44rem;
   height: auto;
@@ -34,7 +12,7 @@ export const Form = styled(motion.form).attrs({
 
   position: absolute;
   z-index: 10;
-  bottom: 0;
+  bottom: -1px;
   left: 2.4rem;
 
   @media (max-width: 916px) {
