@@ -36,5 +36,12 @@ export const Button = styled.button<ButtonProps>`
         border-color: ${theme.colors.primary};
       }
     `}
+
+    &:disabled {
+      background: transparent;
+      border-color: ${theme.colors.text_300};
+      color: ${theme.colors.text_300};
+      cursor: not-allowed;
+    }
   `}
 `;
