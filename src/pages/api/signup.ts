@@ -1,9 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { v4 as uuid } from 'uuid';
-import path from 'path';
 import fs from 'fs';
 
-import { delay, hashPassword, isEmailValid } from '@shared/utils';
+import { Database, delay, hashPassword, isEmailValid } from '@shared/utils';
 import { UserType } from '@shared/types';
 
 type RequestBodyType = {
@@ -36,7 +35,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(400).json({ error: 'Password is required.' });
   }
 
-  const usersDatabasePath = path.join(process.cwd(), 'database', 'users.json');
+  const usersDatabasePath = Database.makeDatabaseFilePath('users.json');
 
   let fileContent = '';
 
@@ -64,7 +63,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   };
 
   try {
-    fs.writeFileSync(usersDatabasePath, JSON.stringify([...users, newUser]));
+    await Database.saveToDatabase('users.json', [...users, newUser]);
   } catch {
     return res.status(500).json({ error: 'Error saving new user.' });
   }

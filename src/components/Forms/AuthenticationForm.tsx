@@ -3,11 +3,11 @@ import { signIn, SignInResponse } from 'next-auth/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
+import { toast } from 'react-toastify';
 
-import { Button } from '@components';
+import { Button, Loader } from '@components';
 
 import * as S from './styles';
-import { toast } from 'react-toastify';
 
 const authenticationSchema = z.object({
   email: z
@@ -24,7 +24,7 @@ type AuthenticationSchema = z.infer<typeof authenticationSchema>;
 
 export const AuthenticationForm: React.FC = () => {
   const {
-    formState: { errors },
+    formState: { errors, isSubmitting },
     handleSubmit,
     register,
   } = useForm<AuthenticationSchema>({
@@ -78,7 +78,9 @@ export const AuthenticationForm: React.FC = () => {
         </S.FormGroup>
 
         <S.ButtonContainer>
-          <Button>Log In</Button>
+          <Button disabled={isSubmitting}>
+            {isSubmitting ? <Loader /> : 'Log In'}
+          </Button>
         </S.ButtonContainer>
       </S.FormFieldset>
     </S.Form>

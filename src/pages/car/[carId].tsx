@@ -2,11 +2,10 @@ import { useCallback, useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import fs from 'fs';
-import path from 'path';
 
 import { CarColorsSliderProps, DetailedCar } from '@components';
 
+import { Database } from '@shared/utils';
 import { CarType } from '@shared/types';
 
 import * as S from '@pageStyles/CarDetails';
@@ -86,11 +85,7 @@ const CarDetailsPage: React.FC<Props> = ({ car }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const carsDatabasePath = path.join(process.cwd(), 'database', 'cars.json');
-  const fileContent = fs.readFileSync(carsDatabasePath) as unknown as string;
-
-  const cars: CarType[] = JSON.parse(fileContent);
-
+  const cars = await Database.getDatabaseFileData<CarType[]>('cars.json');
   const paths = cars.map((car) => ({ params: { carId: car.id.toString() } }));
 
   return {
@@ -102,10 +97,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const { carId } = ctx.params as Params;
 
-  const carsDatabasePath = path.join(process.cwd(), 'database', 'cars.json');
-  const fileContent = fs.readFileSync(carsDatabasePath) as unknown as string;
-
-  const cars: CarType[] = JSON.parse(fileContent);
+  const cars = await Database.getDatabaseFileData<CarType[]>('cars.json');
   const car = cars.find((car) => car.id === +carId) || null;
 
   return {

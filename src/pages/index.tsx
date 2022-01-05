@@ -1,10 +1,9 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import fs from 'fs';
-import path from 'path';
 
 import { Car } from '@components';
 
+import { Database } from '@shared/utils';
 import { CarType } from '@shared/types';
 
 import * as S from '@pageStyles/Home';
@@ -47,11 +46,7 @@ const HomePage: React.FC<Props> = ({ cars }) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const carsDatabasePath = path.join(process.cwd(), 'database', 'cars.json');
-
-  const fileContent = fs.readFileSync(carsDatabasePath) as unknown as string;
-
-  const cars: CarType[] = JSON.parse(fileContent);
+  const cars = await Database.getDatabaseFileData<CarType[]>('cars.json');
 
   return {
     props: { cars },

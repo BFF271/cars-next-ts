@@ -1,9 +1,7 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import path from 'path';
-import fs from 'fs';
 
-import { comparePasswords } from '@shared/utils';
+import { comparePasswords, Database, delay } from '@shared/utils';
 import { UserType } from '@shared/types';
 
 export default NextAuth({
@@ -32,16 +30,10 @@ export default NextAuth({
 
         const { email, password } = credentials;
 
-        const usersDatabasePath = path.join(
-          process.cwd(),
-          'database',
-          'users.json'
-        );
-        const fileContent = fs.readFileSync(
-          usersDatabasePath
-        ) as unknown as string;
-        const users: UserType[] = fileContent ? JSON.parse(fileContent) : [];
+        await delay();
 
+        const users =
+          (await Database.getDatabaseFileData<UserType[]>('users.json')) || [];
         const user = users.find((user) => user.email === email);
 
         if (!user) {
