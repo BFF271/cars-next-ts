@@ -1,4 +1,6 @@
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { getSession } from 'next-auth/react';
 
 import { Forms } from '@components';
 
@@ -31,6 +33,23 @@ const SignUpPage: React.FC = () => {
       </S.Content>
     </S.Container>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession({ req: ctx.req });
+
+  if (session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
 };
 
 export default SignUpPage;
