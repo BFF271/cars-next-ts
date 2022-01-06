@@ -20,7 +20,9 @@
       "@components/*": ["./src/components/*"],
       "@pageStyles/*": ["./src/styles/pages/*"],
       "@styles": ["./src/styles"],
-      "@shared/*": ["./src/shared/*"]
+      "@shared/*": ["./src/shared/*"],
+      "@store": ["./src/store"],
+      "@store/*": ["./src/store/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
