@@ -5,7 +5,7 @@ import * as z from 'zod';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import { Button, Loader } from '@components';
+import { Button, FormGroup, Loader } from '@components';
 
 import { api } from '@shared/services';
 
@@ -61,21 +61,21 @@ export const ProfileForm: React.FC<Props> = ({ currentEmail, currentName }) => {
       <S.FormFieldset>
         <S.FormTitle>Account settings</S.FormTitle>
 
-        <S.FormGroup>
-          <S.Label htmlFor="name">Name</S.Label>
-          <S.Input type="text" id="name" {...register('name')} />
-          {errors.name && (
-            <S.ErrorMessage>{errors.name.message}</S.ErrorMessage>
-          )}
-        </S.FormGroup>
+        <FormGroup
+          title="Name"
+          inputId="name"
+          inputType="text"
+          formRegistration={register('name')}
+          error={errors.name}
+        />
 
-        <S.FormGroup>
-          <S.Label htmlFor="email">Email</S.Label>
-          <S.Input type="text" id="email" {...register('email')} />
-          {errors.email && (
-            <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>
-          )}
-        </S.FormGroup>
+        <FormGroup
+          title="Email"
+          inputId="email"
+          inputType="text"
+          formRegistration={register('email')}
+          error={errors.email}
+        />
 
         <S.ButtonContainer>
           <Button disabled={isSubmitting}>

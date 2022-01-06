@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { toast } from 'react-toastify';
 
-import { Button, Loader } from '@components';
+import { Button, FormGroup, Loader } from '@components';
 
 import * as S from './styles';
 
@@ -61,21 +61,21 @@ export const AuthenticationForm: React.FC = () => {
       <S.FormFieldset>
         <S.FormTitle>Authentication</S.FormTitle>
 
-        <S.FormGroup>
-          <S.Label htmlFor="email">Email</S.Label>
-          <S.Input type="text" id="email" {...register('email')} />
-          {errors.email && (
-            <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>
-          )}
-        </S.FormGroup>
+        <FormGroup
+          title="Email"
+          inputId="email"
+          inputType="text"
+          formRegistration={register('email')}
+          error={errors.email}
+        />
 
-        <S.FormGroup>
-          <S.Label htmlFor="password">Password</S.Label>
-          <S.Input type="password" id="password" {...register('password')} />
-          {errors.password && (
-            <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>
-          )}
-        </S.FormGroup>
+        <FormGroup
+          title="Password"
+          inputId="password"
+          inputType="password"
+          formRegistration={register('password')}
+          error={errors.password}
+        />
 
         <S.ButtonContainer>
           <Button disabled={isSubmitting}>
