@@ -44,20 +44,25 @@ export const Header: React.FC = () => {
               </S.ButtonLink>
               <S.ButtonLink href="/signin">
                 <S.ButtonContainer>
-                  <Button onClick={handleCloseMobileMenu} styleType="primary">
-                    Sign in
-                  </Button>
+                  <Button onClick={handleCloseMobileMenu}>Sign in</Button>
                 </S.ButtonContainer>
               </S.ButtonLink>
             </>
           )}
 
           {session && (
-            <S.ButtonContainer>
-              <Button onClick={handleUserSignOut} styleType="secondary">
-                Sign out
-              </Button>
-            </S.ButtonContainer>
+            <>
+              <S.ButtonLink href="/profile">
+                <S.ButtonContainer>
+                  <Button onClick={handleCloseMobileMenu}>Profile</Button>
+                </S.ButtonContainer>
+              </S.ButtonLink>
+              <S.ButtonContainer>
+                <Button onClick={handleUserSignOut} styleType="secondary">
+                  Sign out
+                </Button>
+              </S.ButtonContainer>
+            </>
           )}
         </S.Buttons>
 
