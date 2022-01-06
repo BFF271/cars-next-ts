@@ -85,7 +85,7 @@ export const Input = styled(motion.input).attrs({
     border-radius: 1.2rem;
 
     font-size: 1.6rem;
-    color: ${theme.colors.text_900};
+    color: ${theme.colors.black};
 
     caret-color: ${theme.colors.primary};
 

@@ -8,3 +8,4 @@ export * from './Layout';
 export * from './Loader';
 export * from './Logo';
 export * from './SearchBar';
+export * from './ToggleThemeButton';

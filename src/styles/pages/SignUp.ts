@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
 
-export const Container = styled.main``;
+export const Container = styled.main`
+  overflow-x: hidden;
+`;
 
 export const Content = styled.div`
   max-width: 124rem;

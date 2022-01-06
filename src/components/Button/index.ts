@@ -26,7 +26,7 @@ export const Button = styled.button<ButtonProps>`
 
       &:hover {
         background: ${theme.colors.primary};
-        color: ${theme.colors.text_50};
+        color: ${theme.colors.white};
       }
     `}
 

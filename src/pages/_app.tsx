@@ -1,44 +1,28 @@
 import type { AppProps } from 'next/app';
-import { ThemeProvider } from 'styled-components';
+import { SessionProvider } from 'next-auth/react';
 import { AnimateSharedLayout } from 'framer-motion';
-import { ToastContainer } from 'react-toastify';
+import { Provider } from 'react-redux';
 
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Layout } from '@components';
 
-import { GlobalStyle, theme } from '@styles';
-import { SessionProvider } from 'next-auth/react';
+import { store } from '@store';
 
 const MyApp: React.FC<AppProps> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <SessionProvider session={session}>
-      <AnimateSharedLayout>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-
+    <Provider store={store}>
+      <SessionProvider session={session}>
+        <AnimateSharedLayout>
           <Layout>
             <Component {...pageProps} />
           </Layout>
-
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable
-            pauseOnHover={false}
-            style={{ zIndex: 9999999, fontSize: 16 }}
-          />
-        </ThemeProvider>
-      </AnimateSharedLayout>
-    </SessionProvider>
+        </AnimateSharedLayout>
+      </SessionProvider>
+    </Provider>
   );
 };
 

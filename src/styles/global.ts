@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -15,9 +15,12 @@ export const GlobalStyle = createGlobalStyle`
   html,
   body,
   #root {
-    width: 100%;
-    height: 100%;
-    font-family: ${({ theme }) => theme.fonts};
+    ${({ theme }) => css`
+      background: ${theme.colors.background_light};
+      width: 100%;
+      height: 100%;
+      font-family: ${theme.fonts};
+    `}
   }
 
   body {

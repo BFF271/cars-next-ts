@@ -29,48 +29,10 @@ export const Container = styled.div`
   }
 `;
 
-const datePickerCustomCSS = css`
-  .react-datepicker__header {
-    background: ${({ theme }) => theme.colors.primary};
-  }
-
-  .react-datepicker-popper[data-placement^='bottom']
-    .react-datepicker__triangle::after {
-    border-bottom-color: ${({ theme }) => theme.colors.primary};
-  }
-
-  .react-datepicker__current-month {
-    font-size: 1.2rem;
-    color: ${({ theme }) => theme.colors.text_50};
-  }
-
-  .react-datepicker__navigation-icon::before {
-    height: 9px;
-    border-width: 2px 2px 0 0;
-    border-color: ${({ theme }) => theme.colors.text_50};
-    top: 2px;
-  }
-
-  .react-datepicker__day-name {
-    font-size: 1rem;
-    color: ${({ theme }) => theme.colors.text_50};
-  }
-
-  .react-datepicker__day {
-    font-size: 1rem;
-  }
-
-  .react-datepicker__day--keyboard-selected {
-    background: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
 export const InputWrapper = styled.label`
   display: flex;
   align-items: center;
   width: 100%;
-
-  ${datePickerCustomCSS};
 
   @media (max-width: 916px) {
     margin-top: 1rem;
@@ -80,7 +42,7 @@ export const InputWrapper = styled.label`
 const iconCSS = css`
   width: 1.6rem;
   height: 1.6rem;
-  color: ${({ theme }) => theme.colors.text_600};
+  color: ${({ theme }) => theme.colors.black};
 
   @media (max-width: 916px) {
     width: 2.4rem;
@@ -114,7 +76,7 @@ export const Input = styled.input`
 
   font-size: 1.2rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.text_600};
+  color: ${({ theme }) => theme.colors.black};
 
   &[type='date']::-webkit-inner-spin-button,
   &[type='date']::-webkit-calendar-picker-indicator {

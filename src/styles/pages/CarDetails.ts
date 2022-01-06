@@ -9,6 +9,7 @@ export const Container = styled.div`
         ${theme.colors.background_dark} 100%
       )
       0% 0% no-repeat padding-box;
+    overflow-x: hidden;
   `}
 `;
 

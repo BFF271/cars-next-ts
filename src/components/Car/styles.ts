@@ -128,6 +128,10 @@ export const Thumbnail = styled(motion.img).attrs({
   width: 24.4rem;
   margin-top: 0.6rem;
   align-self: center;
+
+  @media (max-width: 916px) {
+    margin: 0.6rem 0;
+  }
 `;
 
 export const Footer = styled.footer`
