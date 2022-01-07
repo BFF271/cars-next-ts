@@ -17,7 +17,11 @@ export const CreateCarButton: React.FC = () => {
   }
 
   return createPortal(
-    <S.Container onClick={handleNavigateToNewCarPage}>
+    <S.Container
+      type="button"
+      name="create-car"
+      onClick={handleNavigateToNewCarPage}
+    >
       <S.CarIcon />
     </S.Container>,
     document.querySelector('#root-new-car')!

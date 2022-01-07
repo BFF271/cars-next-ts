@@ -29,7 +29,11 @@ export const Header: React.FC = () => {
         <SearchBar />
 
         <S.Buttons isMobileMenuOpen={isMobileMenuOpen}>
-          <S.CloseMobileMenuButton onClick={handleCloseMobileMenu}>
+          <S.CloseMobileMenuButton
+            type="button"
+            name="close-mobile-menu"
+            onClick={handleCloseMobileMenu}
+          >
             <S.CloseIcon />
           </S.CloseMobileMenuButton>
 
@@ -37,14 +41,25 @@ export const Header: React.FC = () => {
             <>
               <S.ButtonLink href="/signup">
                 <S.ButtonContainer>
-                  <Button onClick={handleCloseMobileMenu} styleType="secondary">
+                  <Button
+                    type="button"
+                    name="sign-up"
+                    onClick={handleCloseMobileMenu}
+                    styleType="secondary"
+                  >
                     Sign up
                   </Button>
                 </S.ButtonContainer>
               </S.ButtonLink>
               <S.ButtonLink href="/signin">
                 <S.ButtonContainer>
-                  <Button onClick={handleCloseMobileMenu}>Sign in</Button>
+                  <Button
+                    type="button"
+                    name="sign-in"
+                    onClick={handleCloseMobileMenu}
+                  >
+                    Sign in
+                  </Button>
                 </S.ButtonContainer>
               </S.ButtonLink>
             </>
@@ -54,11 +69,22 @@ export const Header: React.FC = () => {
             <>
               <S.ButtonLink href="/profile">
                 <S.ButtonContainer>
-                  <Button onClick={handleCloseMobileMenu}>Profile</Button>
+                  <Button
+                    type="button"
+                    name="profile-link"
+                    onClick={handleCloseMobileMenu}
+                  >
+                    Profile
+                  </Button>
                 </S.ButtonContainer>
               </S.ButtonLink>
               <S.ButtonContainer>
-                <Button onClick={handleUserSignOut} styleType="secondary">
+                <Button
+                  type="button"
+                  name="sign-out"
+                  onClick={handleUserSignOut}
+                  styleType="secondary"
+                >
                   Sign out
                 </Button>
               </S.ButtonContainer>
@@ -66,7 +92,11 @@ export const Header: React.FC = () => {
           )}
         </S.Buttons>
 
-        <S.OpenMobileMenuButton onClick={handleOpenMobileMenu}>
+        <S.OpenMobileMenuButton
+          type="button"
+          name="open-mobile-menu"
+          onClick={handleOpenMobileMenu}
+        >
           <S.MenuIcon />
         </S.OpenMobileMenuButton>
       </S.Content>

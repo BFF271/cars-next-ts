@@ -33,7 +33,14 @@ export function Car({ car }: Props) {
             </S.OptionsButton>
           </S.Header>
 
-          <S.Thumbnail src={car.thumbnail} />
+          <S.ThumbnailContainer>
+            <S.Thumbnail
+              src={car.thumbnail}
+              alt={`${car.brand} ${car.model}`}
+              width={300}
+              height={200}
+            />
+          </S.ThumbnailContainer>
 
           <S.Footer>
             <S.Rent>

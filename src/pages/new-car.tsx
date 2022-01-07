@@ -157,6 +157,7 @@ const NewCarPage: React.FC = () => {
               <S.RowButtons>
                 <S.RowButton
                   type="button"
+                  name="add-car-color"
                   disabled={colorFields.length === maxNumbersOfColor}
                   onClick={handleAddNewCarColorFields}
                 >
@@ -166,6 +167,7 @@ const NewCarPage: React.FC = () => {
                 {colorFields.length > 1 && (
                   <S.RowButton
                     type="button"
+                    name="remove-car-color"
                     onClick={() => handleRemoveCarColorFields(index)}
                   >
                     <S.RemoveIcon />
@@ -176,7 +178,7 @@ const NewCarPage: React.FC = () => {
           ))}
 
           <S.ButtonContainer>
-            <Button disabled={isSubmitting}>
+            <Button type="submit" name="submit-new-car" disabled={isSubmitting}>
               {isSubmitting ? <Loader /> : 'Add'}
             </Button>
           </S.ButtonContainer>
@@ -187,6 +189,7 @@ const NewCarPage: React.FC = () => {
             src="/images/new-car-banner.png"
             alt="New car banner"
             layout="fill"
+            priority
           />
         </S.BannerContainer>
       </S.Content>

@@ -24,7 +24,7 @@ export function DetailedCar({ car, color, image, index }: DetailedCarProps) {
   return (
     <S.Container>
       <S.Details>
-        <S.BrandLogo src={car.brandLogo} />
+        <S.BrandLogo src={car.brandLogo} alt={car.brand} />
         <S.Info>
           <S.BrandModel>
             {car.brand} {car.model}

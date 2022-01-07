@@ -30,7 +30,9 @@ const Custom404: React.FC = () => {
 
           <Link href="/" passHref>
             <S.ButtonContainer>
-              <Button>Return to Home</Button>
+              <Button type="button" name="return-to-home">
+                Return to Home
+              </Button>
             </S.ButtonContainer>
           </Link>
         </S.Wrapper>

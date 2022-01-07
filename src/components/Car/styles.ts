@@ -122,16 +122,15 @@ const thumbnailVariants: Variants = {
   },
 };
 
-export const Thumbnail = styled(motion.img).attrs({
+export const ThumbnailContainer = styled(motion.div).attrs({
   variants: thumbnailVariants,
 })`
-  width: 24.4rem;
-  margin-top: 0.6rem;
-  align-self: center;
+  text-align: center;
+`;
 
-  @media (max-width: 916px) {
-    margin: 0.6rem 0;
-  }
+export const Thumbnail = styled.img`
+  width: 100%;
+  object-fit: contain;
 `;
 
 export const Footer = styled.footer`

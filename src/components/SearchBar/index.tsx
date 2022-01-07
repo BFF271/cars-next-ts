@@ -20,7 +20,7 @@ export const SearchBar: React.FC = () => {
         </S.InputWrapper>
       </S.CalendarInputs>
 
-      <S.SearchButton>
+      <S.SearchButton type="button" name="search">
         <S.SearchIcon />
       </S.SearchButton>
     </S.Container>

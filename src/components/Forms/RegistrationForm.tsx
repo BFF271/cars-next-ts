@@ -75,7 +75,11 @@ export const RegistrationForm: React.FC = () => {
         />
 
         <S.ButtonContainer>
-          <Button disabled={isSubmitting}>
+          <Button
+            type="submit"
+            name="submit-registration"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? <Loader /> : 'Register'}
           </Button>
         </S.ButtonContainer>

@@ -66,7 +66,11 @@ export const AuthenticationForm: React.FC = () => {
         />
 
         <S.ButtonContainer>
-          <Button disabled={isSubmitting}>
+          <Button
+            type="submit"
+            name="submit-authentication"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? <Loader /> : 'Log In'}
           </Button>
         </S.ButtonContainer>

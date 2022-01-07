@@ -68,7 +68,11 @@ export const ProfileForm: React.FC<Props> = ({ currentEmail, currentName }) => {
         />
 
         <S.ButtonContainer>
-          <Button disabled={isSubmitting}>
+          <Button
+            type="submit"
+            name="submit-updated-profile"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? <Loader /> : 'Save'}
           </Button>
         </S.ButtonContainer>
