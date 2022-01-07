@@ -31,10 +31,9 @@ export const Label = styled(motion.label).attrs({
   color: ${({ theme }) => theme.colors.text_900};
 `;
 
-export const Input = styled(motion.input).attrs({
-  variants: bottomToTopVariants,
-})`
+const fieldCSS = css`
   ${({ theme }) => css`
+    background: ${theme.colors.white};
     width: 100%;
     height: 4.4rem;
     padding: 1.2rem;
@@ -52,6 +51,19 @@ export const Input = styled(motion.input).attrs({
       border-color: ${theme.colors.primary};
     }
   `}
+`;
+
+export const Input = styled(motion.input).attrs({
+  variants: bottomToTopVariants,
+})`
+  ${fieldCSS}
+`;
+
+export const Select = styled(motion.select).attrs({
+  variants: bottomToTopVariants,
+})`
+  ${fieldCSS};
+  text-transform: capitalize;
 `;
 
 const errorMessageVariants: Variants = {

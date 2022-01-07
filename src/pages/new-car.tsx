@@ -36,12 +36,15 @@ const newCarSchema = z.object({
     .nonempty('Thumbnail is required.')
     .url({ message: 'Invalid thumbnail URL address.' }),
   rent: rentSchema,
-  colors: z.array(carColorSchema),
+  colors: z.array(carColorSchema).nonempty(),
 });
 
 type NewCarSchema = z.infer<typeof newCarSchema>;
 
 const NewCarPage: React.FC = () => {
+  const maxNumbersOfColor = 3;
+  const rentPeriodOptions = ['day', 'month', 'year'];
+
   const {
     control,
     formState: { errors, isSubmitting },
@@ -59,10 +62,18 @@ const NewCarPage: React.FC = () => {
     },
   });
 
-  const { fields } = useFieldArray({ name: 'colors', control });
+  const { fields, append, remove } = useFieldArray({ name: 'colors', control });
+
+  function handleAddNewCarColorFields() {
+    if (fields.length < maxNumbersOfColor) append({ color: '', image: '' });
+  }
+
+  function handleRemoveCarColorFields(fieldIndex: number) {
+    remove(fieldIndex);
+  }
 
   async function handleCreateNewCar() {
-    alert('Create new cart');
+    alert('New car successfully created!');
   }
 
   return (
@@ -79,7 +90,6 @@ const NewCarPage: React.FC = () => {
           <FormGroup
             title="Brand"
             inputId="brand"
-            inputType="text"
             placeholder="Ex.: Chevrolet"
             formRegistration={register('brand')}
             error={errors.brand}
@@ -88,7 +98,6 @@ const NewCarPage: React.FC = () => {
           <FormGroup
             title="Brand logo"
             inputId="brand-logo"
-            inputType="text"
             placeholder="https://"
             formRegistration={register('brandLogo')}
             error={errors.brandLogo}
@@ -97,7 +106,6 @@ const NewCarPage: React.FC = () => {
           <FormGroup
             title="Model"
             inputId="model"
-            inputType="text"
             placeholder="Ex.: Camaro"
             formRegistration={register('model')}
             error={errors.model}
@@ -106,7 +114,6 @@ const NewCarPage: React.FC = () => {
           <FormGroup
             title="Thumbnail"
             inputId="thumbnail"
-            inputType="text"
             placeholder="https://"
             formRegistration={register('thumbnail')}
             error={errors.thumbnail}
@@ -118,16 +125,17 @@ const NewCarPage: React.FC = () => {
               inputId="rent-price"
               inputType="number"
               placeholder="0"
-              formRegistration={register('rent.price')}
+              formRegistration={register('rent.price', { valueAsNumber: true })}
               error={errors.rent?.price}
             />
 
             <FormGroup
               title="Rent period"
               inputId="rent-period"
-              inputType="text"
               formRegistration={register('rent.period')}
               error={errors.rent?.period}
+              isSelectField
+              selectFieldOptions={rentPeriodOptions}
             />
           </S.FormRow>
 
@@ -136,20 +144,37 @@ const NewCarPage: React.FC = () => {
               <FormGroup
                 title="Color"
                 inputId="car-color"
-                inputType="text"
                 placeholder="Ex.: Black"
                 formRegistration={register(`colors.${index}.color`)}
-                error={errors.colors?.[index].color}
+                error={errors.colors?.[index]?.color}
               />
 
               <FormGroup
                 title="Car color image"
                 inputId="car-color-image"
-                inputType="text"
                 placeholder="https://"
                 formRegistration={register(`colors.${index}.image`)}
                 error={errors.colors?.[index]?.image}
               />
+
+              <S.RowButtons>
+                <S.RowButton
+                  type="button"
+                  disabled={fields.length === maxNumbersOfColor}
+                  onClick={handleAddNewCarColorFields}
+                >
+                  <S.AddIcon />
+                </S.RowButton>
+
+                {fields.length > 1 && (
+                  <S.RowButton
+                    type="button"
+                    onClick={() => handleRemoveCarColorFields(index)}
+                  >
+                    <S.RemoveIcon />
+                  </S.RowButton>
+                )}
+              </S.RowButtons>
             </S.FormRow>
           ))}
 

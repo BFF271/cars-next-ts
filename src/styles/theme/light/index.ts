@@ -13,6 +13,6 @@ export const light = {
     text_200: '#c8c8ca',
     text_50: '#ffffff',
     black: '#2d2d2d',
-    white: '#f0f0f0',
+    white: '#ffffff',
   },
 };
