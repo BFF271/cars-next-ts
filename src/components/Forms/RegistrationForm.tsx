@@ -1,29 +1,15 @@
 import Router from 'next/router';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
 import { Button, FormGroup, Loader } from '@components';
 
 import { api } from '@shared/services';
+import { RegistrationSchema, registrationSchema } from '@shared/schemas';
 
 import * as S from './styles';
-
-const registrationSchema = z.object({
-  email: z
-    .string()
-    .nonempty('Email is required.')
-    .email({ message: 'Invalid email address.' }),
-  name: z.string().nonempty('Name is required.'),
-  password: z
-    .string()
-    .nonempty('Password is required.')
-    .min(8, { message: 'Password must be at least 8 characters long.' }),
-});
-
-type RegistrationSchema = z.infer<typeof registrationSchema>;
 
 export const RegistrationForm: React.FC = () => {
   const {

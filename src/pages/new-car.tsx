@@ -3,48 +3,17 @@ import { getSession } from 'next-auth/react';
 import Head from 'next/head';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 
 import { Button, FormGroup, Loader } from '@components';
 
+import { NewCarSchema, newCarSchema } from '@shared/schemas';
+
 import * as S from '@pageStyles/NewCar';
 
-const rentSchema = z.object({
-  price: z.number().positive({ message: 'Only positive numbers.' }).gte(5, {
-    message: 'Rent price must be greater than or equals to $5.00.',
-  }),
-  period: z.enum(['day', 'month', 'year']),
-});
-
-const carColorSchema = z.object({
-  color: z.string().nonempty({ message: 'Color is required.' }),
-  image: z
-    .string()
-    .nonempty({ message: 'Car color image is required.' })
-    .url({ message: 'Invalid car color image URL address.' }),
-});
-
-const newCarSchema = z.object({
-  brand: z.string().nonempty('Brand is required.'),
-  brandLogo: z
-    .string()
-    .nonempty('Brand logo is required.')
-    .url({ message: 'Invalid brand logo URL address.' }),
-  model: z.string().nonempty('Model is required.'),
-  thumbnail: z
-    .string()
-    .nonempty('Thumbnail is required.')
-    .url({ message: 'Invalid thumbnail URL address.' }),
-  rent: rentSchema,
-  colors: z.array(carColorSchema).nonempty(),
-});
-
-type NewCarSchema = z.infer<typeof newCarSchema>;
+const maxNumbersOfColor = 3;
+const rentPeriodOptions = ['day', 'month', 'year'];
 
 const NewCarPage: React.FC = () => {
-  const maxNumbersOfColor = 3;
-  const rentPeriodOptions = ['day', 'month', 'year'];
-
   const {
     control,
     formState: { errors, isSubmitting },
@@ -62,10 +31,15 @@ const NewCarPage: React.FC = () => {
     },
   });
 
-  const { fields, append, remove } = useFieldArray({ name: 'colors', control });
+  const {
+    fields: colorFields,
+    append,
+    remove,
+  } = useFieldArray({ name: 'colors', control });
 
   function handleAddNewCarColorFields() {
-    if (fields.length < maxNumbersOfColor) append({ color: '', image: '' });
+    if (colorFields.length < maxNumbersOfColor)
+      append({ color: '', image: '' });
   }
 
   function handleRemoveCarColorFields(fieldIndex: number) {
@@ -139,7 +113,7 @@ const NewCarPage: React.FC = () => {
             />
           </S.FormRow>
 
-          {fields.map((field, index) => (
+          {colorFields.map((field, index) => (
             <S.FormRow key={field.id}>
               <FormGroup
                 title="Color"
@@ -160,13 +134,13 @@ const NewCarPage: React.FC = () => {
               <S.RowButtons>
                 <S.RowButton
                   type="button"
-                  disabled={fields.length === maxNumbersOfColor}
+                  disabled={colorFields.length === maxNumbersOfColor}
                   onClick={handleAddNewCarColorFields}
                 >
                   <S.AddIcon />
                 </S.RowButton>
 
-                {fields.length > 1 && (
+                {colorFields.length > 1 && (
                   <S.RowButton
                     type="button"
                     onClick={() => handleRemoveCarColorFields(index)}
