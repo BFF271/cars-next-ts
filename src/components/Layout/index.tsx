@@ -1,14 +1,14 @@
+import dynamic from 'next/dynamic';
 import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 
-import { Header } from '@components';
+import { CreateCarButton, Header } from '@components';
 
 import { useReduxSelector } from '@shared/hooks';
 
 import { selectThemeType } from '@store/slices/theme/selectors';
 
 import { GlobalStyle, theme } from '@styles';
-import dynamic from 'next/dynamic';
 
 const ToggleThemeButton = dynamic<unknown>(
   () =>
@@ -27,6 +27,7 @@ export const Layout: React.FC = ({ children }) => {
 
       <Header />
       <ToggleThemeButton />
+      <CreateCarButton />
       {children}
 
       <ToastContainer

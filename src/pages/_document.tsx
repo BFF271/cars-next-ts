@@ -43,6 +43,7 @@ class MyDocument extends Document {
         <Head />
         <body>
           <Main />
+          <div id="root-new-car"></div>
           <div id="root-toggle-theme"></div>
           <NextScript />
         </body>
