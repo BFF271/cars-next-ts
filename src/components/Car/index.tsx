@@ -7,6 +7,15 @@ type Props = {
 };
 
 export function Car({ car }: Props) {
+  const currencyFractionDigits = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).resolvedOptions().maximumFractionDigits;
+
+  const formattedPrice = car.rent.price.toLocaleString('en-US', {
+    maximumFractionDigits: currencyFractionDigits,
+  });
+
   return (
     <S.Container>
       <S.CarDetailsLink href={`/car/${car.id}`}>
@@ -29,7 +38,7 @@ export function Car({ car }: Props) {
           <S.Footer>
             <S.Rent>
               <S.CurrencySymbol>$</S.CurrencySymbol>
-              <S.Price>{car.rent.price}</S.Price>
+              <S.Price>{formattedPrice}</S.Price>
               <S.Period>/{car.rent.period}</S.Period>
             </S.Rent>
           </S.Footer>

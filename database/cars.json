@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "brand": "Ferrari",
     "brandLogo": "https://i.ibb.co/swjw4B6/logo.png",
     "model": "California",
@@ -25,7 +25,7 @@
     ]
   },
   {
-    "id": 2,
+    "id": "2",
     "brand": "Lamborghini",
     "brandLogo": "https://i.ibb.co/PQ2G9c2/logo.png",
     "model": "Aventador",
@@ -50,7 +50,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": "3",
     "brand": "Mustang",
     "brandLogo": "https://i.ibb.co/BT6mrDH/mustang-logo.png",
     "model": "Shelby GT500",
@@ -67,7 +67,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": "4",
     "brand": "Porsche",
     "brandLogo": "https://i.ibb.co/W258kgD/logo.png",
     "model": "Macan Turbo",
@@ -92,7 +92,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": "5",
     "brand": "Chevrolet",
     "brandLogo": "https://i.ibb.co/gmQhqCZ/chevrolet-logo.png",
     "model": "Camaro",

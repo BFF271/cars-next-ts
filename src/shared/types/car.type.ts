@@ -9,7 +9,7 @@ type ColorType = {
 };
 
 export type CarType = {
-  id: number;
+  id: string;
   brand: string;
   brandLogo: string;
   model: string;

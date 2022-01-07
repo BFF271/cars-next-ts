@@ -1,14 +1,23 @@
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import Head from 'next/head';
+import Router from 'next/router';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 import { Button, FormGroup, Loader } from '@components';
 
+import { api } from '@shared/services';
 import { NewCarSchema, newCarSchema } from '@shared/schemas';
 
 import * as S from '@pageStyles/NewCar';
+
+type NewCarApiResponse = {
+  message: string;
+  newCarId: string;
+};
 
 const maxNumbersOfColor = 3;
 const rentPeriodOptions = ['day', 'month', 'year'];
@@ -46,8 +55,22 @@ const NewCarPage: React.FC = () => {
     remove(fieldIndex);
   }
 
-  async function handleCreateNewCar() {
-    alert('New car successfully created!');
+  async function handleCreateNewCar(newCarData: NewCarSchema) {
+    try {
+      const { data: responseData } = await api.post<NewCarApiResponse>(
+        '/new-car',
+        newCarData
+      );
+      toast.success(responseData.message);
+
+      Router.push(`/car/${responseData.newCarId}`);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response!.data.error);
+      } else {
+        toast.error('Something went wrong.');
+      }
+    }
   }
 
   return (
