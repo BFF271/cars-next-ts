@@ -38,11 +38,21 @@ export function CarColorsSlider({
 
   return (
     <S.Container>
-      <S.NavigationButton ref={navPrevButton} side="left">
+      <S.NavigationButton
+        type="button"
+        name="to-left"
+        ref={navPrevButton}
+        side="left"
+      >
         <S.ArrowLeftIcon />
       </S.NavigationButton>
 
-      <S.NavigationButton ref={navNextButton} side="right">
+      <S.NavigationButton
+        type="button"
+        name="to-right"
+        ref={navNextButton}
+        side="right"
+      >
         <S.ArrowRightIcon />
       </S.NavigationButton>
 
@@ -71,7 +81,7 @@ export function CarColorsSlider({
             <SwiperSlide key={color} style={{ height: 'auto' }}>
               <S.Slide>
                 <S.Car isActive={isActive}>
-                  <S.Thumb src={image} isActive={isActive} />
+                  <S.Thumb src={image} alt={color} isActive={isActive} />
                 </S.Car>
               </S.Slide>
             </SwiperSlide>

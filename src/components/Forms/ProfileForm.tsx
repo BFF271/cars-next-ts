@@ -1,25 +1,15 @@
 import { signOut } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import { Button, Loader } from '@components';
+import { Button, FormGroup, Loader } from '@components';
 
 import { api } from '@shared/services';
+import { ProfileSchema, profileSchema } from '@shared/schemas';
 
 import * as S from './styles';
-
-const profileSchema = z.object({
-  email: z
-    .string()
-    .nonempty('Email is required.')
-    .email({ message: 'Invalid email address.' }),
-  name: z.string().nonempty('Name is required.'),
-});
-
-type ProfileSchema = z.infer<typeof profileSchema>;
 
 type Props = {
   currentEmail: string;
@@ -61,24 +51,28 @@ export const ProfileForm: React.FC<Props> = ({ currentEmail, currentName }) => {
       <S.FormFieldset>
         <S.FormTitle>Account settings</S.FormTitle>
 
-        <S.FormGroup>
-          <S.Label htmlFor="name">Name</S.Label>
-          <S.Input type="text" id="name" {...register('name')} />
-          {errors.name && (
-            <S.ErrorMessage>{errors.name.message}</S.ErrorMessage>
-          )}
-        </S.FormGroup>
+        <FormGroup
+          title="Name"
+          inputId="name"
+          inputType="text"
+          formRegistration={register('name')}
+          error={errors.name}
+        />
 
-        <S.FormGroup>
-          <S.Label htmlFor="email">Email</S.Label>
-          <S.Input type="text" id="email" {...register('email')} />
-          {errors.email && (
-            <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>
-          )}
-        </S.FormGroup>
+        <FormGroup
+          title="Email"
+          inputId="email"
+          inputType="text"
+          formRegistration={register('email')}
+          error={errors.email}
+        />
 
         <S.ButtonContainer>
-          <Button disabled={isSubmitting}>
+          <Button
+            type="submit"
+            name="submit-updated-profile"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? <Loader /> : 'Save'}
           </Button>
         </S.ButtonContainer>

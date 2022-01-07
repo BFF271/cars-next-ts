@@ -39,10 +39,11 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en-US">
         <Head />
         <body>
           <Main />
+          <div id="root-new-car"></div>
           <div id="root-toggle-theme"></div>
           <NextScript />
         </body>

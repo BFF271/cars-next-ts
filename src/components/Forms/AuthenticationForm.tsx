@@ -2,25 +2,13 @@ import Router from 'next/router';
 import { signIn, SignInResponse } from 'next-auth/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import * as z from 'zod';
 import { toast } from 'react-toastify';
 
-import { Button, Loader } from '@components';
+import { Button, FormGroup, Loader } from '@components';
+
+import { authenticationSchema, AuthenticationSchema } from '@shared/schemas';
 
 import * as S from './styles';
-
-const authenticationSchema = z.object({
-  email: z
-    .string()
-    .nonempty('Email is required.')
-    .email({ message: 'Invalid email address.' }),
-  password: z
-    .string()
-    .nonempty('Password is required.')
-    .min(8, { message: 'Password must be at least 8 characters long.' }),
-});
-
-type AuthenticationSchema = z.infer<typeof authenticationSchema>;
 
 export const AuthenticationForm: React.FC = () => {
   const {
@@ -61,24 +49,28 @@ export const AuthenticationForm: React.FC = () => {
       <S.FormFieldset>
         <S.FormTitle>Authentication</S.FormTitle>
 
-        <S.FormGroup>
-          <S.Label htmlFor="email">Email</S.Label>
-          <S.Input type="text" id="email" {...register('email')} />
-          {errors.email && (
-            <S.ErrorMessage>{errors.email.message}</S.ErrorMessage>
-          )}
-        </S.FormGroup>
+        <FormGroup
+          title="Email"
+          inputId="email"
+          inputType="text"
+          formRegistration={register('email')}
+          error={errors.email}
+        />
 
-        <S.FormGroup>
-          <S.Label htmlFor="password">Password</S.Label>
-          <S.Input type="password" id="password" {...register('password')} />
-          {errors.password && (
-            <S.ErrorMessage>{errors.password.message}</S.ErrorMessage>
-          )}
-        </S.FormGroup>
+        <FormGroup
+          title="Password"
+          inputId="password"
+          inputType="password"
+          formRegistration={register('password')}
+          error={errors.password}
+        />
 
         <S.ButtonContainer>
-          <Button disabled={isSubmitting}>
+          <Button
+            type="submit"
+            name="submit-authentication"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? <Loader /> : 'Log In'}
           </Button>
         </S.ButtonContainer>

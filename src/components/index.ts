@@ -1,7 +1,9 @@
 export * from './Button';
 export * from './Car';
 export * from './CarColorSlider';
+export * from './CreateCarButton';
 export * from './DetailedCar';
+export * from './FormGroup';
 export * as Forms from './Forms';
 export * from './Header';
 export * from './Layout';

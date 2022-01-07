@@ -12,16 +12,25 @@ type DetailedCarProps = {
 };
 
 export function DetailedCar({ car, color, image, index }: DetailedCarProps) {
+  const currencyFractionDigits = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).resolvedOptions().maximumFractionDigits;
+
+  const formattedPrice = car.rent.price.toLocaleString('en-US', {
+    maximumFractionDigits: currencyFractionDigits,
+  });
+
   return (
     <S.Container>
       <S.Details>
-        <S.BrandLogo src={car.brandLogo} />
+        <S.BrandLogo src={car.brandLogo} alt={car.brand} />
         <S.Info>
           <S.BrandModel>
             {car.brand} {car.model}
           </S.BrandModel>
           <S.Rent>
-            ${car.rent.price}/{car.rent.period}
+            ${formattedPrice}/{car.rent.period}
           </S.Rent>
         </S.Info>
       </S.Details>

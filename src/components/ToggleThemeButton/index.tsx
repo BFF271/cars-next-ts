@@ -17,7 +17,7 @@ export const ToggleThemeButton: React.FC = () => {
   }
 
   return createPortal(
-    <S.Container onClick={handleToggleTheme}>
+    <S.Container type="button" name="toggle-theme" onClick={handleToggleTheme}>
       {themeType === 'light' ? <S.SunIcon /> : <S.MoonIcon />}
     </S.Container>,
     document.querySelector('#root-toggle-theme')!

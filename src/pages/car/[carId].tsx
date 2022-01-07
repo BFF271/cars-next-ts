@@ -98,7 +98,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const { carId } = ctx.params as Params;
 
   const cars = await Database.getDatabaseFileData<CarType[]>('cars.json');
-  const car = cars.find((car) => car.id === +carId) || null;
+  const car = cars.find((car) => car.id === carId) || null;
 
   return {
     props: { car },
